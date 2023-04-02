@@ -1,19 +1,18 @@
-import { Col } from "react-bootstrap";
+import { Col, Form, Row } from "react-bootstrap";
 import { useOrderDetails } from "../../contexts/OrderDetails";
-import { Form, Row } from "react-bootstrap";
 
-export default function ScoopOption({ name, imagePath }) {
+export default function ToppingOption({ name, imagePath }) {
   const { updateItemCount } = useOrderDetails();
 
   function handleChange(e) {
-    updateItemCount(name, parseInt(e.target.value), "scoops");
+    updateItemCount(name, parseInt(e.target.value), "toppings");
   }
 
   return (
     <Col xs={12} sm={6} md={4} lg={3} style={{ textAlign: "center" }}>
       <img
         src={`http://localhost:3030/${imagePath}`}
-        alt={`${name} scoop`}
+        alt={`${name} topping`}
         style={{ width: "75%" }}
       />
 
