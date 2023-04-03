@@ -5,7 +5,7 @@ export default function ToppingOption({ name, imagePath }) {
   const { updateItemCount } = useOrderDetails();
 
   function handleChange(e) {
-    updateItemCount(name, parseInt(e.target.value), "toppings");
+    updateItemCount(name, e.target.checked ? 1 : 0, "toppings");
   }
 
   return (
@@ -16,21 +16,8 @@ export default function ToppingOption({ name, imagePath }) {
         style={{ width: "75%" }}
       />
 
-      <Form.Group
-        controlId={`${name}-count`}
-        as={Row}
-        style={{ marginTop: "10px" }}
-      >
-        <Form.Label column xs="6" style={{ textAlign: "right" }}>
-          {name}
-        </Form.Label>
-        <Col xs="5" style={{ textAlign: "left" }}>
-          <Form.Control
-            type="number"
-            defaultValue={0}
-            onChange={handleChange}
-          />
-        </Col>
+      <Form.Group controlId={`${name}-topping-checkbox`}>
+        <Form.Check type="checkbox" onChange={handleChange} label={name} />
       </Form.Group>
     </Col>
   );
